@@ -222,7 +222,7 @@ add_action('pre_get_posts', 'university_adjust_queries');
 
 
 function universityMapKey($api) {
-    $api['key'] = 'AIzaSyDAnJneQYbStrt1QsR9Asu1g-AnfMN9CVs';
+    $api['key'] = 'USE Your Own Key';
     return $api;
 }
 
@@ -296,4 +296,12 @@ function makeNotePrivate($data, $postarr) {
     }
     
     return $data;
+}
+
+
+add_filter('ailwm_exclude_content_from_export', 'ignoreCertainFiles');
+
+function ignoreCertainFiles($exclude_filters) {
+    $exclude_filters[] = 'themes/university-theme/node_modules';
+    return $exclude_filters;
 }
